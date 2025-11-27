@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Georgio</title>
 
-<!-- FIXED: PUBLIC FONT AWESOME CDN -->
+<!-- PUBLIC FONT AWESOME CDN -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
@@ -21,13 +21,7 @@
         justify-content: center;
         align-items: center;
         overflow: hidden;
-
-        background: radial-gradient(
-            circle at center,
-            #0f0f2d 0%,
-            #050510 60%,
-            #000 100%
-        );
+        background: radial-gradient(circle at center, #0f0f2d 0%, #050510 60%, #000 100%);
     }
 
     body::before {
@@ -91,14 +85,13 @@
         white-space: nowrap;
         border-right: 2px solid #caa5ff;
         width: 0;
-        margin-left: auto;
-        margin-right: auto;
+        margin: 0 auto;
         animation: typing 3s steps(20, end) forwards, blink 0.75s step-end infinite;
     }
 
     @keyframes typing {
         from { width: 0; }
-        to { width: 170px; } /* Adjust to fit text width */
+        to { width: 170px; }
     }
 
     @keyframes blink {
@@ -139,7 +132,7 @@
     }
 
     .socials a {
-        margin: 0 12px;
+        margin: 0 10px;
         font-size: 40px;
         color: #ffffff !important;
         filter: drop-shadow(0 0 8px #a974ff);
@@ -148,14 +141,71 @@
 
     .socials a:hover {
         color: #d7b6ff !important;
-        transform: scale(1.3);
-        filter: drop-shadow(0 0 15px #c170ff);
+        transform: scale(1.2);
     }
 
     footer {
         margin-top: 25px;
         font-size: 13px;
         color: #8a8ab0;
+    }
+
+    /* ---------------- MOBILE RESPONSIVE ---------------- */
+
+    @media (max-width: 480px) {
+        body {
+            padding: 20px;
+            height: auto;
+            overflow-y: auto;
+        }
+
+        .card {
+            width: 90%;
+            padding: 30px 20px;
+        }
+
+        .profile {
+            width: 140px;
+            height: 140px;
+        }
+
+        h1 {
+            font-size: 1.7rem;
+            animation: typing 2.5s steps(16, end) forwards, blink 0.75s step-end infinite;
+        }
+
+        p {
+            font-size: 14px;
+        }
+
+        .skill {
+            padding: 5px 10px;
+            font-size: 12px;
+        }
+
+        .socials a {
+            font-size: 34px;
+            margin: 0 8px;
+        }
+    }
+
+    @media (max-width: 360px) {
+        .profile {
+            width: 120px;
+            height: 120px;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+        }
+
+        p {
+            font-size: 13px;
+        }
+
+        .socials a {
+            font-size: 30px;
+        }
     }
 </style>
 </head>
@@ -165,7 +215,6 @@
 
     <img src="https://i.imgur.com/Rnbn6za.gif" class="profile" />
 
-    <!-- TYPEWRITER NAME -->
     <h1>Georgio</h1>
 
     <p>
@@ -174,16 +223,14 @@
         Currently learning <strong>Java</strong> and developing Discord bots.
     </p>
 
-    <!-- SKILLS SECTION -->
     <div class="skills">
         <div class="skill">Java</div>
-        <div class="skill">Html</div>
+        <div class="skill">HTML</div>
         <div class="skill">CSS</div>
         <div class="skill">Python</div>
         <div class="skill">Discord Bots</div>
     </div>
 
-    <!-- SOCIAL ICONS -->
     <div class="socials">
         <a href="https://github.com/GiorgioKhoury" target="_blank"><i class="fab fa-github"></i></a>
         <a href="https://instagram.com/_georgiokhoury" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -191,7 +238,7 @@
         <a href="mailto:georgio.c.khoury@outlook.com"><i class="fas fa-envelope"></i></a>
     </div>
 
-    <footer>© 2025 Georgio all rights reserved.</footer>
+    <footer>© 2025 Georgio. All rights reserved.</footer>
 </div>
 </body>
 </html>
