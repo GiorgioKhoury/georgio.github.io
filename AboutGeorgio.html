@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Georgio</title>
+
+<!-- FIXED: PUBLIC FONT AWESOME CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
+
+    /* ---------------- BACKGROUND ---------------- */
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: "Poppins", sans-serif;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+
+        background: radial-gradient(
+            circle at center,
+            #0f0f2d 0%,
+            #050510 60%,
+            #000 100%
+        );
+    }
+
+    body::before {
+        content: "";
+        position: absolute;
+        width: 200%;
+        height: 200%;
+        background: url("https://i.imgur.com/Rnbn6za.gif");
+        opacity: 0.07;
+        animation: float 18s infinite linear;
+    }
+
+    @keyframes float {
+        0% { transform: translate(0, 0); }
+        100% { transform: translate(-200px, -200px); }
+    }
+
+    /* ---------------- CARD ---------------- */
+    .card {
+        background: rgba(10, 10, 25, 0.55);
+        padding: 45px 35px;
+        width: 420px;
+        border-radius: 18px;
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(140, 80, 255, 0.4);
+        box-shadow: 0 0 25px rgba(120, 50, 255, 0.35);
+        text-align: center;
+        animation: fadeIn 1.2s ease-out;
+        position: relative;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ---------------- PROFILE GIF ---------------- */
+    .profile {
+        width: 180px;
+        height: 180px;
+        margin-bottom: 20px;
+        border-radius: 50%;
+        object-fit: cover;
+        box-shadow: 0 0 20px #8a43ff, 0 0 50px #8a43ff, 0 0 80px #8a43ff;
+        animation: pulse 3.5s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+        0% { box-shadow: 0 0 20px #8a43ff; }
+        50% { box-shadow: 0 0 55px #b86cff; }
+        100% { box-shadow: 0 0 20px #8a43ff; }
+    }
+
+    /* ---------------- TYPEWRITER NAME ---------------- */
+    h1 {
+        color: #fff;
+        font-size: 2rem;
+        margin-bottom: 10px;
+        text-shadow: 0 0 12px rgba(140, 80, 255, 0.8);
+        overflow: hidden;
+        white-space: nowrap;
+        border-right: 2px solid #caa5ff;
+        width: 0;
+        margin-left: auto;
+        margin-right: auto;
+        animation: typing 3s steps(20, end) forwards, blink 0.75s step-end infinite;
+    }
+
+    @keyframes typing {
+        from { width: 0; }
+        to { width: 170px; } /* Adjust to fit text width */
+    }
+
+    @keyframes blink {
+        50% { border-color: transparent; }
+    }
+
+    /* ---------------- PARAGRAPH ---------------- */
+    p {
+        color: #d9d9f7;
+        line-height: 1.6;
+        font-size: 15px;
+        margin-bottom: 20px;
+    }
+
+    /* ---------------- SKILLS SECTION ---------------- */
+    .skills {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 25px;
+    }
+
+    .skill {
+        padding: 6px 14px;
+        border-radius: 12px;
+        background: rgba(140, 80, 255, 0.15);
+        color: #e7d8ff;
+        font-size: 13px;
+        border: 1px solid rgba(170, 110, 255, 0.4);
+        box-shadow: 0 0 6px rgba(150, 80, 255, 0.4);
+        backdrop-filter: blur(4px);
+    }
+
+    /* ---------------- SOCIAL ICONS ---------------- */
+    .socials {
+        margin-top: 10px;
+    }
+
+    .socials a {
+        margin: 0 12px;
+        font-size: 40px;
+        color: #ffffff !important;
+        filter: drop-shadow(0 0 8px #a974ff);
+        transition: 0.3s ease;
+    }
+
+    .socials a:hover {
+        color: #d7b6ff !important;
+        transform: scale(1.3);
+        filter: drop-shadow(0 0 15px #c170ff);
+    }
+
+    footer {
+        margin-top: 25px;
+        font-size: 13px;
+        color: #8a8ab0;
+    }
+</style>
+</head>
+
+<body>
+<div class="card">
+
+    <img src="https://i.imgur.com/Rnbn6za.gif" class="profile" />
+
+    <!-- TYPEWRITER NAME -->
+    <h1>Georgio</h1>
+
+    <p>
+        Computer Science student from Lebanon.<br />
+        Passionate about building software and tech projects.<br />
+        Currently learning <strong>Java</strong> and developing Discord bots.
+    </p>
+
+    <!-- SKILLS SECTION -->
+    <div class="skills">
+        <div class="skill">Java</div>
+        <div class="skill">Html</div>
+        <div class="skill">CSS</div>
+        <div class="skill">Python</div>
+        <div class="skill">Discord Bots</div>
+    </div>
+
+    <!-- SOCIAL ICONS -->
+    <div class="socials">
+        <a href="https://github.com/GiorgioKhoury" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://instagram.com/_georgiokhoury" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://discord.com/users/georgio961" target="_blank"><i class="fab fa-discord"></i></a>
+        <a href="mailto:georgio.c.khoury@outlook.com"><i class="fas fa-envelope"></i></a>
+    </div>
+
+    <footer>© 2025 Georgio all rights reserved.</footer>
+</div>
+</body>
+</html>
