@@ -1,308 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Georgio Khoury</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <style>
-        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Georgio Khoury</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        body {
-            font-family: "Poppins", sans-serif;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: auto;
-            background: radial-gradient(circle at center, #0f0f2d 0%, #050510 60%, #000 100%);
-            cursor: none;
-            padding: 20px;
-        }
+    body {
+      font-family: "Poppins", sans-serif;
+      background: radial-gradient(circle at center, #0f0f2d 0%, #050510 60%, #000 100%);
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: none;
+      position: relative;
+    }
 
-        a, button {
-            cursor: none !important;
-        }
+    a, button {
+      cursor: none !important;
+    }
 
-        body::before {
-            content: "";
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            background: url("https://i.imgur.com/Rnbn6za.gif");
-            opacity: 0.07;
-            animation: float 18s infinite linear;
-        }
+    body::before {
+      content: "";
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: url("https://i.imgur.com/Rnbn6za.gif");
+      opacity: 0.07;
+      animation: float 18s infinite linear;
+    }
 
-        @keyframes float {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(-200px, -200px); }
-        }
+    @keyframes float {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(-200px, -200px); }
+    }
 
-        .card {
-            background: rgba(10, 10, 25, 0.55);
-            padding: 40px 30px;
-            width: 90%;
-            max-width: 480px;
-            border-radius: 18px;
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(140, 80, 255, 0.4);
-            box-shadow: 0 0 25px rgba(120, 50, 255, 0.35);
-            text-align: center;
-            animation: fadeIn 1.2s ease-out;
-            position: relative;
-            margin: auto;
-        }
+    .cursor-glow {
+      width: 14px;
+      height: 14px;
+      background: rgba(180, 120, 255, 0.95);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      box-shadow:
+        0 0 12px rgba(180, 120, 255, 1),
+        0 0 25px rgba(150, 80, 255, 0.8),
+        0 0 40px rgba(150, 80, 255, 0.6);
+      transform: translate(-50%, -50%);
+    }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+    .card {
+      background: rgba(10, 10, 25, 0.55);
+      padding: 40px 30px;
+      width: 90%;
+      max-width: 420px;
+      border-radius: 18px;
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(140, 80, 255, 0.4);
+      box-shadow: 0 0 25px rgba(120, 50, 255, 0.35);
+      text-align: center;
+      animation: fadeIn 1.2s ease-out;
+      position: relative;
+    }
 
-        .profile {
-            width: 160px;
-            height: 160px;
-            margin-bottom: 20px;
-            border-radius: 50%;
-            object-fit: cover;
-            box-shadow: 0 0 20px #8a43ff, 0 0 50px #8a43ff, 0 0 80px #8a43ff;
-            animation: pulse 3.5s infinite ease-in-out;
-        }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-        @keyframes pulse {
-            0% { box-shadow: 0 0 20px #8a43ff; }
-            50% { box-shadow: 0 0 55px #b86cff; }
-            100% { box-shadow: 0 0 20px #8a43ff; }
-        }
+    .profile {
+      width: 160px;
+      height: 160px;
+      margin-bottom: 20px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 0 20px #8a43ff, 0 0 50px #8a43ff, 0 0 80px #8a43ff;
+      animation: pulse 3.5s infinite ease-in-out;
+    }
 
-        h1 {
-            color: #fff;
-            font-size: 2rem;
-            margin-bottom: 15px;
-            text-shadow: 0 0 12px rgba(140, 80, 255, 0.8);
-            overflow: hidden;
-            white-space: nowrap;
-            border-right: 2px solid #caa5ff;
-            width: 0;
-            margin: 0 auto;
-            animation: typing 3s steps(20, end) forwards,
-                       blink 0.75s step-end infinite;
-        }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 20px #8a43ff; }
+      50% { box-shadow: 0 0 55px #b86cff; }
+      100% { box-shadow: 0 0 20px #8a43ff; }
+    }
 
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 200px; }
-        }
+    h1 {
+      color: #fff;
+      font-size: 2rem;
+      margin-bottom: 15px;
+      text-shadow: 0 0 12px rgba(140, 80, 255, 0.8);
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 2px solid rgba(200, 170, 255, 0.9);
+      width: 0;
+      margin: 0 auto 15px;
+      animation: typing 3s steps(20, end) forwards, blink 0.75s step-end infinite;
+    }
 
-        @keyframes blink {
-            50% { border-color: transparent; }
-        }
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 7.8ch; }
+    }
 
-        p {
-            color: #d9d9f7;
-            line-height: 1.6;
-            font-size: 1rem;
-            margin-bottom: 20px;
-        }
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
 
-        .skills {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 25px;
-        }
+    p {
+      color: #d9d9f7;
+      line-height: 1.6;
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
 
-        .skill {
-            padding: 6px 14px;
-            border-radius: 12px;
-            background: rgba(140, 80, 255, 0.15);
-            color: #e7d8ff;
-            font-size: 0.9rem;
-            border: 1px solid rgba(170, 110, 255, 0.4);
-            box-shadow: 0 0 6px rgba(150, 80, 255, 0.4);
-            backdrop-filter: blur(4px);
-        }
+    .skills {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 25px;
+    }
 
-        .socials {
-            margin-top: 15px;
-        }
+    .skill {
+      padding: 6px 14px;
+      border-radius: 12px;
+      background: rgba(140, 80, 255, 0.15);
+      color: #e7d8ff;
+      font-size: 0.9rem;
+      border: 1px solid rgba(170, 110, 255, 0.4);
+      box-shadow: 0 0 6px rgba(150, 80, 255, 0.4);
+      backdrop-filter: blur(4px);
+    }
 
-        .socials a {
-            margin: 0 10px;
-            font-size: 2.2rem;
-            color: #ffffff !important;
-            filter: drop-shadow(0 0 8px #a974ff);
-            transition: 0.3s ease;
-        }
+    .socials {
+      margin-top: 15px;
+    }
 
-        .socials a:hover {
-            color: #d7b6ff !important;
-            transform: scale(1.2);
-        }
+    .socials a {
+      margin: 0 10px;
+      font-size: 2.2rem;
+      color: #ffffff !important;
+      filter: drop-shadow(0 0 8px #a974ff);
+      transition: 0.3s ease;
+    }
 
-        footer {
-            margin-top: 20px;
-            font-size: 0.9rem;
-            color: #8a8ab0;
-        }
+    .socials a:hover {
+      color: #d7b6ff !important;
+      transform: scale(1.2);
+    }
 
-        .cursor-glow {
-            width: 14px;
-            height: 14px;
-            background: rgba(180, 120, 255, 0.95);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            box-shadow:
-                0 0 12px rgba(180, 120, 255, 1),
-                0 0 25px rgba(150, 80, 255, 0.8),
-                0 0 40px rgba(150, 80, 255, 0.6);
-        }
+    footer {
+      margin-top: 20px;
+      font-size: 0.9rem;
+      color: #8a8ab0;
+    }
 
-        /* Responsive adjustments - only activate when really needed */
-        @media (max-height: 650px) {
-            .card {
-                padding: 25px 20px;
-            }
-            .profile {
-                width: 140px;
-                height: 140px;
-                margin-bottom: 15px;
-            }
-            h1 {
-                font-size: 1.8rem;
-                margin-bottom: 12px;
-            }
-            p {
-                font-size: 0.95rem;
-                margin-bottom: 15px;
-            }
-            .skills {
-                margin-bottom: 20px;
-            }
-            .socials a {
-                font-size: 2rem;
-            }
-            footer {
-                margin-top: 15px;
-            }
-        }
-
-        @media (max-height: 550px) {
-            .card {
-                padding: 20px 15px;
-            }
-            .profile {
-                width: 120px;
-                height: 120px;
-                margin-bottom: 12px;
-            }
-            h1 {
-                font-size: 1.6rem;
-                margin-bottom: 10px;
-            }
-            p {
-                font-size: 0.9rem;
-                margin-bottom: 12px;
-            }
-            .skills {
-                margin-bottom: 15px;
-                gap: 8px;
-            }
-            .skill {
-                padding: 5px 12px;
-                font-size: 0.85rem;
-            }
-            .socials a {
-                font-size: 1.8rem;
-                margin: 0 8px;
-            }
-            footer {
-                margin-top: 12px;
-                font-size: 0.85rem;
-            }
-        }
-
-        /* Only scale as a last resort for very small screens */
-        @media (max-height: 450px) {
-            .card {
-                transform: scale(0.9);
-                transform-origin: center;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .cursor-glow { display: none !important; }
-            body { cursor: auto !important; }
-        }
-    </style>
+    @media (max-width: 768px) {
+      .cursor-glow { display: none !important; }
+      body { cursor: auto !important; }
+    }
+  </style>
 </head>
 <body>
-    <div class="cursor-glow"></div>
-
-    <div class="card">
-        <img src="https://i.imgur.com/Rnbn6za.gif" class="profile" alt="Profile Picture" />
-        <h1>Georgio</h1>
-
-        <p>
-            Hello, I'm Georgio — a Computer Science student from Lebanon.<br>
-            I'm in my first year and I'm working on improving my programming skills day by day.<br>
-            I'm currently learning <strong>Java</strong> and creating small projects to get better and gain more experience.
-        </p>
-
-        <div class="skills">
-            <div class="skill">Java</div>
-            <div class="skill">HTML</div>
-            <div class="skill">CSS</div>
-            <div class="skill">Python</div>
-            <div class="skill">Discord Bots</div>
-        </div>
-
-        <div class="socials">
-            <a href="https://github.com/GiorgioKhoury" aria-label="GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://instagram.com/_georgiokhoury" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://discord.com/users/georgio961" aria-label="Discord"><i class="fab fa-discord"></i></a>
-            <a href="mailto:georgio.c.khoury@outlook.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-        </div>
-
-        <footer>© 2025 Georgio. All rights reserved.</footer>
+  <div class="cursor-glow"></div>
+  <div class="card">
+    <img src="https://i.imgur.com/Rnbn6za.gif" class="profile" alt="Profile" />
+    <h1>Georgio</h1>
+    <p>
+      Hello, I’m Georgio — a Computer Science student from Lebanon.<br>
+      I’m in my first year and working hard to improve my programming skills.<br>
+      I’m currently learning Java and building small projects to grow my experience.
+    </p>
+    <div class="skills">
+      <div class="skill">Java</div>
+      <div class="skill">HTML</div>
+      <div class="skill">CSS</div>
+      <div class="skill">Python</div>
+      <div class="skill">Discord Bots</div>
     </div>
-
-    <script>
-        const glow = document.querySelector(".cursor-glow");
-        document.addEventListener("mousemove", (e) => {
-            glow.style.left = e.clientX + "px";
-            glow.style.top = e.clientY + "px";
-        });
-
-        // Only apply scaling if content doesn't fit
-        function checkContentFit() {
-            const card = document.querySelector('.card');
-            const body = document.body;
-            const cardRect = card.getBoundingClientRect();
-            const windowHeight = window.innerHeight;
-            
-            // Reset any previous scaling
-            card.style.transform = '';
-            
-            // Only scale if card is significantly taller than viewport
-            if (cardRect.height > windowHeight * 0.95) {
-                const scale = (windowHeight * 0.9) / cardRect.height;
-                card.style.transform = `scale(${Math.max(scale, 0.8)})`;
-            }
-        }
-
-        // Check on load and resize
-        window.addEventListener('load', checkContentFit);
-        window.addEventListener('resize', checkContentFit);
-    </script>
+    <div class="socials">
+      <a href="https://github.com/GiorgioKhoury"><i class="fab fa-github"></i></a>
+      <a href="https://instagram.com/_georgiokhoury"><i class="fab fa-instagram"></i></a>
+      <a href="https://discord.com/users/georgio961"><i class="fab fa-discord"></i></a>
+      <a href="mailto:georgio.c.khoury@outlook.com"><i class="fas fa-envelope"></i></a>
+    </div>
+    <footer>© 2025 Georgio. All rights reserved.</footer>
+  </div>
+  <script>
+    const glow = document.querySelector(".cursor-glow");
+    document.addEventListener("mousemove", (e) => {
+      glow.style.left = `${e.clientX}px`;
+      glow.style.top = `${e.clientY}px`;
+    });
+  </script>
 </body>
 </html>
