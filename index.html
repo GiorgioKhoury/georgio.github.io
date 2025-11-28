@@ -3,15 +3,13 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Georgio</title>
+<title>Georgio Khoury</title>
 
-<!-- PUBLIC FONT AWESOME CDN -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
     @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
 
-    /* ---------------- BACKGROUND ---------------- */
     body {
         margin: 0;
         padding: 0;
@@ -22,6 +20,11 @@
         align-items: center;
         overflow: hidden;
         background: radial-gradient(circle at center, #0f0f2d 0%, #050510 60%, #000 100%);
+        cursor: none;
+    }
+
+    a, button {
+        cursor: none !important;
     }
 
     body::before {
@@ -39,7 +42,6 @@
         100% { transform: translate(-200px, -200px); }
     }
 
-    /* ---------------- CARD ---------------- */
     .card {
         background: rgba(10, 10, 25, 0.55);
         padding: 45px 35px;
@@ -58,7 +60,6 @@
         to { opacity: 1; transform: translateY(0); }
     }
 
-    /* ---------------- PROFILE GIF ---------------- */
     .profile {
         width: 180px;
         height: 180px;
@@ -86,19 +87,21 @@
         border-right: 2px solid #caa5ff;
         width: 0;
         margin: 0 auto;
-        animation: typing 3s steps(20, end) forwards, blink 0.75s step-end infinite;
+
+        /* UPDATED WIDTH = moves cursor a bit to the right */
+        animation: typing 3s steps(20, end) forwards,
+                   blink 0.75s step-end infinite;
     }
 
     @keyframes typing {
         from { width: 0; }
-        to { width: 170px; }
+        to { width: 200px; } /* Cursor ends farther right */
     }
 
     @keyframes blink {
         50% { border-color: transparent; }
     }
 
-    /* ---------------- PARAGRAPH ---------------- */
     p {
         color: #d9d9f7;
         line-height: 1.6;
@@ -106,7 +109,6 @@
         margin-bottom: 20px;
     }
 
-    /* ---------------- SKILLS SECTION ---------------- */
     .skills {
         display: flex;
         justify-content: center;
@@ -126,7 +128,6 @@
         backdrop-filter: blur(4px);
     }
 
-    /* ---------------- SOCIAL ICONS ---------------- */
     .socials {
         margin-top: 10px;
     }
@@ -150,78 +151,42 @@
         color: #8a8ab0;
     }
 
-    /* ---------------- MOBILE RESPONSIVE ---------------- */
-
-    @media (max-width: 480px) {
-        body {
-            padding: 20px;
-            height: auto;
-            overflow-y: auto;
-        }
-
-        .card {
-            width: 90%;
-            padding: 30px 20px;
-        }
-
-        .profile {
-            width: 140px;
-            height: 140px;
-        }
-
-        h1 {
-            font-size: 1.7rem;
-            animation: typing 2.5s steps(16, end) forwards, blink 0.75s step-end infinite;
-        }
-
-        p {
-            font-size: 14px;
-        }
-
-        .skill {
-            padding: 5px 10px;
-            font-size: 12px;
-        }
-
-        .socials a {
-            font-size: 34px;
-            margin: 0 8px;
-        }
+    .cursor-glow {
+        width: 14px;
+        height: 14px;
+        background: rgba(180, 120, 255, 0.95);
+        border-radius: 50%;
+        position: fixed;
+        pointer-events: none;
+        z-index: 9999;
+        box-shadow:
+            0 0 12px rgba(180, 120, 255, 1),
+            0 0 25px rgba(150, 80, 255, 0.8),
+            0 0 40px rgba(150, 80, 255, 0.6);
     }
 
-    @media (max-width: 360px) {
-        .profile {
-            width: 120px;
-            height: 120px;
-        }
-
-        h1 {
-            font-size: 1.5rem;
-        }
-
-        p {
-            font-size: 13px;
-        }
-
-        .socials a {
-            font-size: 30px;
-        }
+    @media (max-width: 768px) {
+        .cursor-glow { display: none !important; }
+        body { cursor: auto !important; }
     }
 </style>
 </head>
 
 <body>
+
+<div class="cursor-glow"></div>
+
 <div class="card">
-
     <img src="https://i.imgur.com/Rnbn6za.gif" class="profile" />
-
     <h1>Georgio</h1>
 
     <p>
-        Computer Science student from Lebanon.<br />
-        Passionate about building software and tech projects.<br />
-        Currently learning <strong>Java</strong> and developing Discord bots.
-    </p>
+Hello, I’m Georgio — a Computer Science student from Lebanon.<br>
+I’m in my first year and I’m working on improving my programming skills day by day.<br>
+I’m currently learning <strong>Java</strong> and creating small projects to get better and gain more experience.
+</p>
+
+
 
     <div class="skills">
         <div class="skill">Java</div>
@@ -232,14 +197,22 @@
     </div>
 
     <div class="socials">
-        <a href="https://github.com/GiorgioKhoury" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="https://instagram.com/_georgiokhoury" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://discord.com/users/georgio961" target="_blank"><i class="fab fa-discord"></i></a>
+        <a href="https://github.com/GiorgioKhoury"><i class="fab fa-github"></i></a>
+        <a href="https://instagram.com/_georgiokhoury"><i class="fab fa-instagram"></i></a>
+        <a href="https://discord.com/users/georgio961"><i class="fab fa-discord"></i></a>
         <a href="mailto:georgio.c.khoury@outlook.com"><i class="fas fa-envelope"></i></a>
     </div>
 
     <footer>© 2025 Georgio. All rights reserved.</footer>
 </div>
+
+<script>
+const glow = document.querySelector(".cursor-glow");
+document.addEventListener("mousemove", (e) => {
+    glow.style.left = e.clientX + "px";
+    glow.style.top = e.clientY + "px";
+});
+</script>
+
 </body>
 </html>
-
