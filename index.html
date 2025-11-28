@@ -10,6 +10,7 @@
 <style>
     @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
 
+    /* ---------- GLOBAL ---------- */
     body {
         margin: 0;
         padding: 0;
@@ -18,8 +19,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        background: #050510;
         overflow: hidden;
-        background: radial-gradient(circle at center, #0f0f2d 0%, #050510 60%, #000 100%);
         cursor: none;
     }
 
@@ -27,122 +28,123 @@
         cursor: none !important;
     }
 
-    body::before {
-        content: "";
-        position: absolute;
+    /* ---------- OPTIMIZED MOVING BACKGROUND ---------- */
+    .bg {
+        position: fixed;
         width: 200%;
         height: 200%;
-        background: url("https://i.imgur.com/Rnbn6za.gif");
-        opacity: 0.07;
-        animation: float 18s infinite linear;
+        background: radial-gradient(circle, #5b2aff22 0%, #12002211 50%, #000000 100%);
+        animation: bgmove 25s linear infinite;
+        z-index: -2;
     }
 
-    @keyframes float {
-        0% { transform: translate(0, 0); }
-        100% { transform: translate(-200px, -200px); }
+    @keyframes bgmove {
+        from { transform: translate(0,0); }
+        to { transform: translate(-300px,-300px); }
     }
 
+    /* ---------- CENTER CARD ---------- */
     .card {
         background: rgba(10, 10, 25, 0.55);
-        padding: 45px 35px;
-        width: 420px;
-        border-radius: 18px;
-        backdrop-filter: blur(12px);
-        border: 1px solid rgba(140, 80, 255, 0.4);
+        width: min(92%, 420px);
+        padding: 40px 30px;
+        border-radius: 20px;
+        backdrop-filter: blur(14px);
+        border: 1px solid rgba(140, 80, 255, 0.45);
         box-shadow: 0 0 25px rgba(120, 50, 255, 0.35);
         text-align: center;
         animation: fadeIn 1.2s ease-out;
-        position: relative;
     }
 
     @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(20px); }
+        from { opacity: 0; transform: translateY(25px); }
         to { opacity: 1; transform: translateY(0); }
     }
 
+    /* ---------- PROFILE IMAGE ---------- */
     .profile {
-        width: 180px;
-        height: 180px;
-        margin-bottom: 20px;
+        width: 170px;
+        height: 170px;
         border-radius: 50%;
         object-fit: cover;
-        box-shadow: 0 0 20px #8a43ff, 0 0 50px #8a43ff, 0 0 80px #8a43ff;
-        animation: pulse 3.5s infinite ease-in-out;
+        margin-bottom: 18px;
+
+        /* Lighter shadows for performance */
+        box-shadow: 0 0 18px #8a43ff, 0 0 40px #8a43ffaa;
+        animation: pulse 3.2s infinite ease-in-out;
     }
 
     @keyframes pulse {
         0% { box-shadow: 0 0 20px #8a43ff; }
-        50% { box-shadow: 0 0 55px #b86cff; }
+        50% { box-shadow: 0 0 45px #b86cff; }
         100% { box-shadow: 0 0 20px #8a43ff; }
     }
 
-    /* ---------------- TYPEWRITER NAME ---------------- */
+    /* ---------- NAME + TYPEWRITER ---------- */
     h1 {
         color: #fff;
         font-size: 2rem;
         margin-bottom: 10px;
-        text-shadow: 0 0 12px rgba(140, 80, 255, 0.8);
-        overflow: hidden;
         white-space: nowrap;
+        overflow: hidden;
         border-right: 2px solid #caa5ff;
         width: 0;
         margin: 0 auto;
+        text-shadow: 0 0 10px #8a43ff;
 
-        /* UPDATED WIDTH = moves cursor a bit to the right */
-        animation: typing 3s steps(20, end) forwards,
-                   blink 0.75s step-end infinite;
+        animation: typing 2.2s steps(7, end) forwards,
+                   blink 0.7s step-end infinite;
     }
 
     @keyframes typing {
         from { width: 0; }
-        to { width: 200px; } /* Cursor ends farther right */
+        to { width: 215px; }
     }
 
     @keyframes blink {
         50% { border-color: transparent; }
     }
 
+    /* ---------- TEXT ---------- */
     p {
-        color: #d9d9f7;
-        line-height: 1.6;
+        color: #ddd7ff;
         font-size: 15px;
-        margin-bottom: 20px;
+        line-height: 1.6;
+        margin-top: 18px;
     }
 
+    /* ---------- SKILLS ---------- */
     .skills {
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
-        gap: 10px;
-        margin-bottom: 25px;
+        gap: 8px;
+        margin: 25px 0;
     }
 
     .skill {
         padding: 6px 14px;
         border-radius: 12px;
-        background: rgba(140, 80, 255, 0.15);
-        color: #e7d8ff;
-        font-size: 13px;
+        background: rgba(140, 80, 255, 0.18);
         border: 1px solid rgba(170, 110, 255, 0.4);
-        box-shadow: 0 0 6px rgba(150, 80, 255, 0.4);
-        backdrop-filter: blur(4px);
+        font-size: 13px;
+        color: #e7d8ff;
+        text-shadow: 0 0 4px #8a43ff;
     }
 
-    .socials {
-        margin-top: 10px;
-    }
-
+    /* ---------- SOCIAL ICONS ---------- */
     .socials a {
         margin: 0 10px;
-        font-size: 40px;
-        color: #ffffff !important;
-        filter: drop-shadow(0 0 8px #a974ff);
-        transition: 0.3s ease;
+        font-size: 36px;
+        color: #ffffffcc;
+        transition: 0.25s;
+        filter: drop-shadow(0 0 6px #a974ff);
     }
 
     .socials a:hover {
-        color: #d7b6ff !important;
-        transform: scale(1.2);
+        color: #ffffff;
+        transform: scale(1.15);
+        filter: drop-shadow(0 0 12px #c170ff);
     }
 
     footer {
@@ -151,28 +153,34 @@
         color: #8a8ab0;
     }
 
+    /* ---------- CUSTOM CURSOR ---------- */
     .cursor-glow {
-        width: 14px;
-        height: 14px;
-        background: rgba(180, 120, 255, 0.95);
+        width: 12px;
+        height: 12px;
+        background: #b478ff;
         border-radius: 50%;
         position: fixed;
         pointer-events: none;
         z-index: 9999;
+        transition: transform 0.03s linear;
         box-shadow:
-            0 0 12px rgba(180, 120, 255, 1),
-            0 0 25px rgba(150, 80, 255, 0.8),
-            0 0 40px rgba(150, 80, 255, 0.6);
+            0 0 12px #c09cff,
+            0 0 25px #a36cff;
     }
 
+    /* ---------- MOBILE ---------- */
     @media (max-width: 768px) {
-        .cursor-glow { display: none !important; }
         body { cursor: auto !important; }
+        .cursor-glow { display: none; }
+        .profile { width: 150px; height: 150px; }
+        h1 { font-size: 1.6rem; }
     }
 </style>
 </head>
 
 <body>
+
+<div class="bg"></div>
 
 <div class="cursor-glow"></div>
 
@@ -181,12 +189,10 @@
     <h1>Georgio</h1>
 
     <p>
-Hello, I’m Georgio — a Computer Science student from Lebanon.<br>
-I’m in my first year and I’m working on improving my programming skills day by day.<br>
-I’m currently learning <strong>Java</strong> and creating small projects to get better and gain more experience.
-</p>
-
-
+        Hello, I’m Georgio — a Computer Science student from Lebanon.<br>
+        I’m in my first year and improving my programming skills day by day.<br>
+        I'm currently learning <strong>Java</strong> and building small projects to grow my experience.
+    </p>
 
     <div class="skills">
         <div class="skill">Java</div>
@@ -208,9 +214,9 @@ I’m currently learning <strong>Java</strong> and creating small projects to ge
 
 <script>
 const glow = document.querySelector(".cursor-glow");
+
 document.addEventListener("mousemove", (e) => {
-    glow.style.left = e.clientX + "px";
-    glow.style.top = e.clientY + "px";
+    glow.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
 });
 </script>
 
