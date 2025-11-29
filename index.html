@@ -18,6 +18,7 @@
       font-family: "Poppins", sans-serif;
       background: radial-gradient(circle at center, #0f0f2d 0%, #050510 60%, #000 100%);
       height: 100vh;
+      width: 100vw;
       overflow: hidden;
       display: flex;
       justify-content: center;
@@ -63,8 +64,7 @@
     .card {
       background: rgba(10, 10, 25, 0.55);
       padding: 40px 30px;
-      width: 90%;
-      max-width: 420px;
+      width: 420px;
       border-radius: 18px;
       backdrop-filter: blur(12px);
       border: 1px solid rgba(140, 80, 255, 0.4);
@@ -72,6 +72,7 @@
       text-align: center;
       animation: fadeIn 1.2s ease-out;
       position: relative;
+      display: inline-block;
     }
 
     @keyframes fadeIn {
@@ -174,6 +175,7 @@
 </head>
 <body>
   <div class="cursor-glow"></div>
+
   <div class="card">
     <img src="https://i.imgur.com/Rnbn6za.gif" class="profile" alt="Profile" />
     <h1>Georgio</h1>
@@ -182,6 +184,7 @@
       I’m in my first year and working hard to improve my programming skills.<br>
       I’m currently learning Java and building small projects to grow my experience.
     </p>
+
     <div class="skills">
       <div class="skill">Java</div>
       <div class="skill">HTML</div>
@@ -189,20 +192,46 @@
       <div class="skill">Python</div>
       <div class="skill">Discord Bots</div>
     </div>
+
     <div class="socials">
       <a href="https://github.com/GiorgioKhoury"><i class="fab fa-github"></i></a>
       <a href="https://instagram.com/_georgiokhoury"><i class="fab fa-instagram"></i></a>
       <a href="https://discord.com/users/georgio961"><i class="fab fa-discord"></i></a>
       <a href="mailto:georgio.c.khoury@outlook.com"><i class="fas fa-envelope"></i></a>
     </div>
+
     <footer>© 2025 Georgio. All rights reserved.</footer>
   </div>
+
   <script>
+    function scaleCard() {
+      const card = document.querySelector(".card");
+      const bodyWidth = window.innerWidth;
+      const bodyHeight = window.innerHeight;
+
+      // Base design size
+      const baseWidth = 420;
+      const baseHeight = 750;
+
+      // Calculate scale factor
+      const scaleX = bodyWidth / baseWidth;
+      const scaleY = bodyHeight / baseHeight;
+      const scale = Math.min(scaleX, scaleY, 1);
+
+      card.style.transform = `scale(${scale})`;
+      card.style.transformOrigin = "center center";
+    }
+
+    scaleCard();
+    window.addEventListener("resize", scaleCard);
+
+    // Cursor glow movement
     const glow = document.querySelector(".cursor-glow");
     document.addEventListener("mousemove", (e) => {
       glow.style.left = `${e.clientX}px`;
       glow.style.top = `${e.clientY}px`;
     });
   </script>
+
 </body>
 </html>
