@@ -4,7 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Georgio Khoury</title>
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
 
@@ -70,14 +72,13 @@
       border: 1px solid rgba(140, 80, 255, 0.4);
       box-shadow: 0 0 25px rgba(120, 50, 255, 0.35);
       text-align: center;
-      animation: fadeIn 1.2s ease-out;
       position: relative;
       display: inline-block;
-    }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      /* Fade-in animation */
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.8s ease;
     }
 
     .profile {
@@ -172,8 +173,33 @@
       body { cursor: auto !important; }
     }
   </style>
+
+  <!-- PRE-SCALE -->
+  <script>
+    function preScale() {
+      const baseWidth = 420;
+      const baseHeight = 750;
+
+      const bw = window.innerWidth;
+      const bh = window.innerHeight;
+
+      const scaleX = bw / baseWidth;
+      const scaleY = bh / baseHeight;
+      const scale = Math.min(scaleX, scaleY, 1);
+
+      const card = document.querySelector(".card");
+      if (card) {
+        card.style.transform = `scale(${scale})`;
+        card.style.transformOrigin = "center center";
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", preScale);
+  </script>
+
 </head>
 <body>
+
   <div class="cursor-glow"></div>
 
   <div class="card">
@@ -203,27 +229,33 @@
     <footer>© 2025 Georgio. All rights reserved.</footer>
   </div>
 
+  <!-- FINAL-SCALE + FADE-IN -->
   <script>
-    function scaleCard() {
+    function finalScale() {
       const card = document.querySelector(".card");
-      const bodyWidth = window.innerWidth;
-      const bodyHeight = window.innerHeight;
 
-      // Base design size
+      const bw = window.innerWidth;
+      const bh = window.innerHeight;
+
       const baseWidth = 420;
       const baseHeight = 750;
 
-      // Calculate scale factor
-      const scaleX = bodyWidth / baseWidth;
-      const scaleY = bodyHeight / baseHeight;
+      const scaleX = bw / baseWidth;
+      const scaleY = bh / baseHeight;
       const scale = Math.min(scaleX, scaleY, 1);
 
       card.style.transform = `scale(${scale})`;
       card.style.transformOrigin = "center center";
+
+      // Reveal + Fade-in
+      card.style.visibility = "visible";
+      requestAnimationFrame(() => {
+        card.style.opacity = "1";  // smooth fade-in
+      });
     }
 
-    scaleCard();
-    window.addEventListener("resize", scaleCard);
+    window.addEventListener("load", finalScale);
+    window.addEventListener("resize", finalScale);
 
     // Cursor glow movement
     const glow = document.querySelector(".cursor-glow");
